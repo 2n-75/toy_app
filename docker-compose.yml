@@ -1,0 +1,31 @@
+version: '3'
+services:
+  tw_sample_web:
+    build: .
+    command: ./run_server.sh
+    volumes:
+      - .:/myapp:cached
+      - bundle:/usr/local/bundle
+      - /myapp/node_modules
+    ports:
+      - "23300:3000"
+    links:
+      - tw_sample_db
+    depends_on:
+      - tw_sample_db
+    tty: true
+    stdin_open: true
+  tw_sample_db:
+    image: mysql:5
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+    ports:
+      - "23336:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=rails_tutorial_twitter
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pass
+volumes:
+  bundle:
+    driver: local
