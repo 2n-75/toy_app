@@ -1,0 +1,15 @@
+AllCops:
+  DisplayCopNames: true
+
+Rails:
+  Enabled: true
+
+Metrics/AbcSize:
+  Max: 20
+
+Naming/UncommunicativeMethodParamName:
+  AllowedNames:
+    - io
+    - id
+    - to
+    - _
