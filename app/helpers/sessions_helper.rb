@@ -24,8 +24,8 @@ module SessionsHelper
   end
 
   # 渡されたユーザーがログイン済みユーザーであればtrueを返す
-  def current_user?(_user)
+  def current_user?(user)
     @current_user = User.find_by(id: session[:user_id]) if @current_user.nil?
-    @current_user.id == _user.id
+    @current_user.id == user.id
   end
 end
