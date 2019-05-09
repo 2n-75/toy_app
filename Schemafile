@@ -18,8 +18,8 @@ create_table :relationships do |t|
 
   t.timestamps
 end
-add_index :users, [:id, :name, :email]
-add_index :microposts, [:id, :user_id]
+add_index :users, [:name, :email]
+add_index :microposts, [:user_id]
 add_index :relationships, :follower_id
 add_index :relationships, :followed_id
 add_index :relationships, %i[follower_id followed_id], unique: true
