@@ -1,0 +1,18 @@
+= form_with(model: micropost, local: true) do |form|
+  - if micropost.errors.any?
+    #error_explanation
+      h2
+        = pluralize(micropost.errors.count, "error")
+        |  prohibited this micropost from being saved:
+      ul
+        - micropost.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = form.label :content
+    = form.text_area :content
+  .field
+    = form.label :user_id
+    = form.number_field :user_id
+  .actions
+    = form.submit
